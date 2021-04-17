@@ -9,7 +9,7 @@ let activeNote = {};
 
 // A function for getting all notes from the db
 const getNotes = function() {
-  return $.ajax({
+   return $.ajax({
     url: '/api/notes',
     method: 'GET',
   });
@@ -109,13 +109,13 @@ const renderNoteList = function(notes) {
 
   for (let i = 0; i < notes.length; i++) {
     const note = notes[i];
-
+  
     const $li = $("<li class='list-group-item'>").data(note);
     const $span = $('<span>').text(note.title);
     const $delBtn = $(
       "<i class='fas fa-trash-alt float-right text-danger delete-note'>"
     );
-
+      
     $li.append($span, $delBtn);
     noteListItems.push($li);
   }
@@ -129,6 +129,7 @@ const renderNoteList = function(notes) {
 // Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = function() {
   return getNotes().then(function(data){
+  
     renderNoteList(data);
   });
 };

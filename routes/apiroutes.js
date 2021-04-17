@@ -1,15 +1,23 @@
 const fs = require('fs');
+const dbJson= require('../db/db.json')
 
 module.exports = function(app) {
-    app.get('/api/notes', function(req, res) {
-        fs.readFile('./db/db.json', (err, data) => {
-          let dbData = JSON.parse(data);
-          console.log(dbData);
-          if (err) throw err;
-          
-          else return res.json(dbData);
-        });
+  app.get('/api/notes', function(req, res) {
+    console.log('route hit')
+      fs.readFile('./db/db.json','utf8', (err, data) => {
+        let dbData = JSON.parse(data);
+        console.log(dbData);
+       
+        if (err) {console.log(err)}
+        
+        else{
+        
+          return res.json(dbData);
+       
+        } 
       });
+    });
+
 
       app.post('/api/notes', function(req, res) {
         const userNotes = req.body;
@@ -44,6 +52,7 @@ module.exports = function(app) {
           if (err) throw err;
     
           // Comparing each note's id to delete note
+
           dbData = JSON.parse(data);
           for (let i = 0; i < dbData.length; i++) {
             if (dbData[i].id === Number(deleteNote)) {
@@ -61,3 +70,5 @@ module.exports = function(app) {
         res.status(204).send();
       });
     };
+    
+  
