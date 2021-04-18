@@ -13,6 +13,8 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
 ## Demo
 
+![Note Taker](https://user-images.githubusercontent.com/70453836/115131155-ceafd100-9fc3-11eb-9a8e-885c0b3e1c12.gif)
+
 ## URLs
 Heroku
 Github
